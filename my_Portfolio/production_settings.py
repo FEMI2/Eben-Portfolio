@@ -1,6 +1,7 @@
 import os
 from .settings import *
 from decouple import config
+import dj_database_url
 
 # Production settings
 DEBUG = False
@@ -21,6 +22,7 @@ ALLOWED_HOSTS = [
 # Use SQLite for local production testing, PostgreSQL for cloud deployment
 if config('DATABASE_URL', default=None):
     # Use PostgreSQL if DATABASE_URL is provided (for cloud platforms like Heroku)
+    import dj_database_url
     DATABASES = {
         'default': dj_database_url.config(conn_max_age=500)
     }
@@ -72,7 +74,27 @@ LOGGING = {
     },
 }
 
-# Email configuration (optional)
+# Template configuration override
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'backend', 'Templates'),
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+# Email configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = config('EMAIL_HOST', default='smtp.gmail.com')
 EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
