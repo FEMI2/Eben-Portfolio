@@ -152,9 +152,13 @@ CACHE_MIDDLEWARE_KEY_PREFIX = ''
 # Static files cache headers
 STATIC_FILE_MAX_AGE = 31536000  # 1 year for static files
 
+# Only use DATABASE_URL if it's set (for production/Heroku)
 db_from_env = dj_database_url.config(conn_max_age=500)
 if db_from_env:
     DATABASES['default'].update(db_from_env)
+else:
+    # For local development, stick with SQLite
+    print("Using SQLite database for local development")
 
 
 

@@ -8,30 +8,30 @@ DEBUG = False
 # Security settings
 SECRET_KEY = config('SECRET_KEY', default='your-secret-key-here')
 
-# Allowed hosts - configured for ebenportfolio.eu
+# Allowed hosts - configured for ebenportfolio.eu and Heroku
 ALLOWED_HOSTS = [
     'ebenportfolio.eu',
     'www.ebenportfolio.eu',
+    'ebenportfolio-78671a1d9553.herokuapp.com',
     'localhost',
     '127.0.0.1',
 ]
 
 # Database configuration for production
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME', default='portfolio_db'),
-        'USER': config('DB_USER', default='postgres'),
-        'PASSWORD': config('DB_PASSWORD', default=''),
-        'HOST': config('DB_HOST', default='localhost'),
-        'PORT': config('DB_PORT', default='5432'),
+# Use SQLite for local production testing, PostgreSQL for cloud deployment
+if config('DATABASE_URL', default=None):
+    # Use PostgreSQL if DATABASE_URL is provided (for cloud platforms like Heroku)
+    DATABASES = {
+        'default': dj_database_url.config(conn_max_age=500)
     }
-}
-
-# Use dj-database-url if DATABASE_URL is provided (for platforms like Heroku)
-db_from_env = dj_database_url.config(conn_max_age=500)
-if db_from_env:
-    DATABASES['default'].update(db_from_env)
+else:
+    # Use SQLite for local production testing
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'production_db.sqlite3'),
+        }
+    }
 
 # Static files configuration for production
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -46,10 +46,10 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_SECONDS = 31536000
 SECURE_REDIRECT_EXEMPT = []
-SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = False  # Disabled for local testing
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = False  # Disabled for local testing
+CSRF_COOKIE_SECURE = False  # Disabled for local testing
 X_FRAME_OPTIONS = 'DENY'
 
 # Logging configuration
