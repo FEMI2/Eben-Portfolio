@@ -1,0 +1,942 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ebenezer Iluyomade - IT Professional & Cybersecurity Specialist Portfolio">
+    <meta name="keywords" content="IT Support, Cybersecurity, Azure, Python, Django, Portfolio">
+    <title>Ebenezer Iluyomade - Portfolio</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="{% static 'critical.css' %}" as="style">
+    <link rel="preload" href="{% static 'script.js' %}" as="script">
+    <link rel="preload" href="{% static 'image-optimizer.js' %}" as="script">
+    
+    <!-- Critical CSS for faster rendering -->
+    <link rel="stylesheet" href="{% static 'critical.css' %}">
+    
+    <!-- Non-critical CSS loaded asynchronously -->
+    <link rel="preload" href="{% static 'styles.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{% static 'styles.css' %}"></noscript>
+    
+    <!-- Favicon and icons -->
+    <link rel="icon" type="image/svg+xml" href="{% static 'assets/favicon.svg' %}">
+    <link rel="apple-touch-icon" href="{% static 'assets/apple-touch-icon.png' %}">
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>Portfolio</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="#blog" class="nav-link">Blog</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">Hi, I'm Ebenezer</h1>
+                        <p class="hero-description">Highly motivated and detail-oriented IT Engineer with a robust background in technical support, IT infrastructure management, cybersecurity, and customer service, complemented by expertise in leveraging cloud platforms such as Microsoft Azure and Amazon Web Services (AWS) to design, deploy, and optimize scalable and secure cloud-based solutions.</p>
+                        <div class="hero-buttons">
+                            <a href="#contact" class="btn btn-primary">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                                Get In Touch
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="profile-container">
+
+                            <div class="profile-image">
+                                <img src="{% static 'assets/IMG_9169.JPG' %}" alt="Ebenezer Iluyomade - Professional Portrait" class="profile-photo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                                <path d="M7 11h10"/>
+                                <path d="M7 7h7"/>
+                                <circle cx="17" cy="7" r="1"/>
+                            </svg>
+                        </div>
+                        <h3>Technical Expertise</h3>
+                        <p>Demonstrated ability to troubleshoot complex technical issues, implement system improvements, and contribute to secure, reliable IT operations.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <h3>Collaboration</h3>
+                        <p>Known for effective collaboration, adaptability, and a passion for continuous learning. Eager to bring technical expertise and problem-solving skills to a dynamic IT team.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27,6.96 12,12.01 20.73,6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            </svg>
+                        </div>
+                        <h3>Location</h3>
+                        <p> Available for on-site, remote, or hybrid work arrangements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>IT Infrastructure & Security</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Microsoft Azure</span>
+                            <span class="skill-tag">Active Directory</span>
+                            <span class="skill-tag">DNS</span>
+                            <span class="skill-tag">DHCP</span>
+                            <span class="skill-tag">Windows Server</span>
+                            <span class="skill-tag">Security Baselines (NIST, CIS)</span>
+                            <span class="skill-tag">SOC Practices</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Cloud & Networking</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">EC2</span>
+                            <span class="skill-tag">IAM</span>
+                            <span class="skill-tag">SSO</span>
+                            <span class="skill-tag">Computer Networks</span>
+                            <span class="skill-tag">Wireshark</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Programming & Databases</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Django</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">Oracle SQL</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Tools & Platforms</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Salesforce</span>
+                            <span class="skill-tag">SAP</span>
+                            <span class="skill-tag">Zendesk</span>
+                            <span class="skill-tag">Tableau</span>
+                            <span class="skill-tag">Microsoft Office</span>
+                            <span class="skill-tag">Slack</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>CRM & Support Systems</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">CRM Systems</span>
+                            <span class="skill-tag">Customer Support Software</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Experience Section -->
+        <section id="experience" class="experience-section">
+            <div class="container">
+                <h2 class="section-title">Professional Experience</h2>
+                
+                <div class="experience-timeline">
+                    <div class="experience-card">
+                        <div class="experience-date">
+                            <span class="date-range">Aug 2022 - Jan 2023</span>
+                        </div>
+                        <div class="experience-content">
+                            <div class="experience-header">
+                                <h3 class="job-title">IT Specialist</h3>
+                                <div class="company-location">
+                                    <span class="company">KYNDRYL</span>
+                                    <span class="location">• Wrocław</span>
+                                </div>
+                            </div>
+                            <div class="experience-description">
+                                <ul class="responsibilities-list">
+                                    <li>Delivered Tier 1 and Tier 2 IT support, performing system diagnostics, troubleshooting, and technical assistance.</li>
+                                    <li>Supported IT operations including system maintenance, patch management, and security practices.</li>
+                                    <li>Collaborated with cross-functional teams to resolve hardware, software, and network issues promptly.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="experience-date">
+                            <span class="date-range">Nov 2021 - Jul 2022</span>
+                        </div>
+                        <div class="experience-content">
+                            <div class="experience-header">
+                                <h3 class="job-title">Customer Support Specialist</h3>
+                                <div class="company-location">
+                                    <span class="company">SITEL</span>
+                                    <span class="location">• Warsaw</span>
+                                </div>
+                            </div>
+                            <div class="experience-description">
+                                <ul class="responsibilities-list">
+                                    <li>Provided technical assistance to customers on software, hardware, and networking issues.</li>
+                                    <li>Handled customer inquiries and resolved service tickets using CRM systems.</li>
+                                    <li>Configured and installed software and operating systems for end-users.</li>
+                                    <li>Maintained accurate service records and improved customer satisfaction scores.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Certifications Section -->
+        <section id="education" class="section">
+            <div class="container">
+                <h2 class="section-title">Education & Certifications</h2>
+                
+                <div class="education-certifications">
+                    <div class="education-column">
+                        <div class="column-header">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                            </svg>
+                            <h3>Education</h3>
+                        </div>
+                        
+                        <div class="education-item">
+                            <h4>Bachelor of Science in Computer Engineering</h4>
+                            <p class="institution">Wrocław Business University of Applied Sciences</p>
+                            <p class="duration">Jan 2021 - Jan 2024</p>
+                            <p class="description">Core Subjects: Python, Oracle SQL, Operating Systems, Systems Analysis, Networking, Computer Architecture</p>
+                        </div>
+                    </div>
+
+                    <div class="certifications-column">
+                        <div class="column-header">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <h3>Certifications</h3>
+                        </div>
+                        
+                        <div class="cert-list">
+                            <div class="cert-item">
+                                <span class="cert-name">Microsoft Certified: Azure Fundamentals (AZ-900)</span>
+                            </div>
+                            <div class="cert-item">
+                                <span class="cert-name">Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC-900)</span>
+                            </div>
+                            <div class="cert-item">
+                                <span class="cert-name">(ISC)² Certified in Cybersecurity</span>
+                            </div>
+                            <div class="cert-item">
+                                <span class="cert-name">ITIL® Fundamentals - Axelos</span>
+                            </div>
+                            <div class="cert-item">
+                                <span class="cert-name">Basics of Security Management - Axelos</span>
+                            </div>
+                            <div class="cert-item">
+                                <span class="cert-name">Information Technology Management - Axelos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages & Interests -->
+                <div class="simple-info-section">
+                    <div class="simple-languages">
+                        <h3 class="simple-title">Languages</h3>
+                        <div class="simple-list">
+                            <div class="simple-item">
+                                <span class="item-name">English</span>
+                                <span class="item-level">Native</span>
+                            </div>
+                            <div class="simple-item">
+                                <span class="item-name">Polish</span>
+                                <span class="item-level">Intermediate</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="simple-interests">
+                        <h3 class="simple-title">Interests</h3>
+                        <div class="simple-tags">
+                            <span class="simple-tag">Fitness</span>
+                            <span class="simple-tag">Reading</span>
+                            <span class="simple-tag">Professional Development</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                
+                <div class="featured-projects">
+                    <div class="featured-project">
+                        <div class="project-image">
+                            <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="250" fill="#0f172a"/>
+                                <rect x="0" y="0" width="400" height="35" fill="#1e293b"/>
+                                <circle cx="15" cy="17.5" r="4" fill="#ef4444"/>
+                                <circle cx="30" cy="17.5" r="4" fill="#f59e0b"/>
+                                <circle cx="45" cy="17.5" r="4" fill="#10b981"/>
+                                <text x="200" y="22" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Analytics Dashboard</text>
+                                <rect x="0" y="35" width="80" height="215" fill="#1e293b"/>
+                                <rect x="10" y="45" width="60" height="8" fill="#475569" rx="2"/>
+                                <rect x="10" y="60" width="45" height="6" fill="#64748b" rx="2"/>
+                                <rect x="10" y="72" width="50" height="6" fill="#64748b" rx="2"/>
+                                <rect x="10" y="84" width="40" height="6" fill="#64748b" rx="2"/>
+                                <rect x="90" y="45" width="300" height="195" fill="#0f172a"/>
+                                <rect x="100" y="55" width="65" height="40" fill="#1e293b" rx="4"/>
+                                <text x="132" y="68" font-family="Arial, sans-serif" font-size="8" fill="#10b981" text-anchor="middle">CPU</text>
+                                <text x="132" y="80" font-family="Arial, sans-serif" font-size="12" fill="#10b981" text-anchor="middle" font-weight="bold">78%</text>
+                                <rect x="175" y="55" width="65" height="40" fill="#1e293b" rx="4"/>
+                                <text x="207" y="68" font-family="Arial, sans-serif" font-size="8" fill="#3b82f6" text-anchor="middle">Memory</text>
+                                <text x="207" y="80" font-family="Arial, sans-serif" font-size="12" fill="#3b82f6" text-anchor="middle" font-weight="bold">64%</text>
+                                <rect x="250" y="55" width="65" height="40" fill="#1e293b" rx="4"/>
+                                <text x="282" y="68" font-family="Arial, sans-serif" font-size="8" fill="#f59e0b" text-anchor="middle">Disk</text>
+                                <text x="282" y="80" font-family="Arial, sans-serif" font-size="12" fill="#f59e0b" text-anchor="middle" font-weight="bold">45%</text>
+                                <rect x="325" y="55" width="55" height="40" fill="#1e293b" rx="4"/>
+                                <text x="352" y="68" font-family="Arial, sans-serif" font-size="8" fill="#ef4444" text-anchor="middle">Alerts</text>
+                                <text x="352" y="80" font-family="Arial, sans-serif" font-size="12" fill="#ef4444" text-anchor="middle" font-weight="bold">3</text>
+                                <rect x="100" y="105" width="280" height="120" fill="#1e293b" rx="6"/>
+                                <text x="240" y="120" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Server Performance Over Time</text>
+                                <polyline points="110,200 130,180 150,190 170,160 190,170 210,150 230,140 250,155 270,135 290,145 310,125 330,130 350,115 370,120" stroke="#10b981" stroke-width="2" fill="none"/>
+                                <polyline points="110,210 130,195 150,205 170,185 190,195 210,175 230,165 250,180 270,160 290,170 310,150 330,155 350,140 370,145" stroke="#3b82f6" stroke-width="2" fill="none"/>
+                                <circle cx="150" cy="190" r="2" fill="#10b981"/>
+                                <circle cx="210" cy="150" r="2" fill="#10b981"/>
+                                <circle cx="270" cy="135" r="2" fill="#10b981"/>
+                                <circle cx="330" cy="130" r="2" fill="#10b981"/>
+                                <rect x="320" y="110" width="8" height="2" fill="#10b981"/>
+                                <text x="332" y="113" font-family="Arial, sans-serif" font-size="7" fill="#94a3b8">CPU Usage</text>
+                                <rect x="320" y="118" width="8" height="2" fill="#3b82f6"/>
+                                <text x="332" y="121" font-family="Arial, sans-serif" font-size="7" fill="#94a3b8">Memory Usage</text>
+                            </svg>
+                        </div>
+                        <div class="project-content">
+                            <h3>IT Infrastructure Monitoring Dashboard</h3>
+                            <p>Comprehensive monitoring dashboard for tracking server performance, security metrics, and system health using Python and Django framework.</p>
+                            <div class="project-tech">
+                                <span class="tech">Python</span>
+                                <span class="tech">Django</span>
+                                <span class="tech">JavaScript</span>
+                                <span class="tech">Oracle SQL</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="#" class="btn-primary">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="featured-project">
+                        <div class="project-image">
+                            <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="250" fill="#0c0c0c"/>
+                                <rect x="0" y="0" width="400" height="30" fill="#1a1a1a"/>
+                                <circle cx="15" cy="15" r="4" fill="#ff5f56"/>
+                                <circle cx="30" cy="15" r="4" fill="#ffbd2e"/>
+                                <circle cx="45" cy="15" r="4" fill="#27ca3f"/>
+                                <text x="200" y="19" font-family="Monaco, monospace" font-size="9" fill="#8b949e" text-anchor="middle">Security Analysis Terminal</text>
+                                <rect x="0" y="30" width="400" height="220" fill="#0d1117"/>
+                                <text x="10" y="50" font-family="Monaco, monospace" font-size="8" fill="#7c3aed">root@security-analyzer:~$</text>
+                                <text x="140" y="50" font-family="Monaco, monospace" font-size="8" fill="#22c55e">wireshark -i eth0 -f "tcp port 443"</text>
+                                <text x="10" y="70" font-family="Monaco, monospace" font-size="7" fill="#64748b">Capturing on 'Ethernet adapter'</text>
+                                <text x="10" y="85" font-family="Monaco, monospace" font-size="7" fill="#f59e0b">ALERT: Suspicious traffic detected</text>
+                                <rect x="10" y="95" width="180" height="80" fill="#1e293b" rx="4"/>
+                                <text x="100" y="110" font-family="Monaco, monospace" font-size="8" fill="#e2e8f0" text-anchor="middle">Network Traffic Analysis</text>
+                                <rect x="20" y="120" width="40" height="8" fill="#ef4444"/>
+                                <text x="65" y="127" font-family="Monaco, monospace" font-size="6" fill="#ef4444">HIGH: 23 threats</text>
+                                <rect x="20" y="135" width="25" height="8" fill="#f59e0b"/>
+                                <text x="50" y="142" font-family="Monaco, monospace" font-size="6" fill="#f59e0b">MED: 15 threats</text>
+                                <rect x="20" y="150" width="15" height="8" fill="#10b981"/>
+                                <text x="40" y="157" font-family="Monaco, monospace" font-size="6" fill="#10b981">LOW: 8 threats</text>
+                                <rect x="210" y="95" width="180" height="80" fill="#1e293b" rx="4"/>
+                                <text x="300" y="110" font-family="Monaco, monospace" font-size="8" fill="#e2e8f0" text-anchor="middle">Packet Flow Rate</text>
+                                <polyline points="220,160 230,150 240,155 250,140 260,145 270,130 280,135 290,125 300,130 310,120 320,125 330,115 340,120 350,110 360,115 370,105 380,110" stroke="#22c55e" stroke-width="1.5" fill="none"/>
+                                <circle cx="250" cy="140" r="1.5" fill="#ef4444"/>
+                                <circle cx="290" cy="125" r="1.5" fill="#f59e0b"/>
+                                <circle cx="330" cy="115" r="1.5" fill="#ef4444"/>
+                                <text x="10" y="195" font-family="Monaco, monospace" font-size="6" fill="#64748b">[12:34:56] TCP 192.168.1.100:443 -> 10.0.0.1:8080</text>
+                                <text x="10" y="207" font-family="Monaco, monospace" font-size="6" fill="#ef4444">[12:34:57] MALWARE DETECTED: Trojan.Generic</text>
+                                <text x="10" y="219" font-family="Monaco, monospace" font-size="6" fill="#f59e0b">[12:34:58] SUSPICIOUS: Port scan from 203.0.113.1</text>
+                                <text x="10" y="231" font-family="Monaco, monospace" font-size="6" fill="#22c55e">[12:34:59] BLOCKED: Connection terminated</text>
+                                <circle cx="380" cy="40" r="6" fill="#22c55e"/>
+                                <text x="365" y="44" font-family="Monaco, monospace" font-size="6" fill="#22c55e">ACTIVE</text>
+                            </svg>
+                        </div>
+                        <div class="project-content">
+                            <h3>Network Security Analysis Tool</h3>
+                            <p>Advanced network security analysis tool using Wireshark and Python to monitor network traffic and identify potential security threats in real-time.</p>
+                            <div class="project-tech">
+                                <span class="tech">Python</span>
+                                <span class="tech">Wireshark</span>
+                                <span class="tech">Network Security</span>
+                                <span class="tech">.NET Framework</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="#" class="btn-primary">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services I Offer Section -->
+            <section id="services" class="services-offer-section">
+                <div class="container">
+                    <h2 class="section-title">Services I Offer</h2>
+                    <p class="section-subtitle">Comprehensive IT solutions tailored to your business needs. From infrastructure management to custom development, I provide expert services backed by industry certifications and proven experience.</p>
+                    
+                    <div class="services-offer-grid">
+                        <!-- IT Support & Infrastructure -->
+                        <div class="service-offer-card">
+                            <div class="service-offer-image">
+                                <svg viewBox="0 0 200 120" class="service-svg">
+                                    <rect width="200" height="120" fill="#f8f9fa" rx="8"/>
+                                    <rect x="20" y="20" width="160" height="80" fill="#e9ecef" rx="4"/>
+                                    <rect x="30" y="30" width="50" height="30" fill="#007bff" rx="2"/>
+                                    <rect x="90" y="30" width="50" height="30" fill="#28a745" rx="2"/>
+                                    <rect x="150" y="30" width="20" height="30" fill="#ffc107" rx="2"/>
+                                    <rect x="30" y="70" width="140" height="4" fill="#6c757d" rx="2"/>
+                                    <rect x="30" y="80" width="100" height="4" fill="#6c757d" rx="2"/>
+                                    <circle cx="40" cy="45" r="8" fill="white"/>
+                                    <path d="M36 45l3 3 6-6" stroke="#007bff" stroke-width="2" fill="none"/>
+                                </svg>
+                            </div>
+                            <h3>IT Support & Infrastructure</h3>
+                            <p>Comprehensive IT support including system diagnostics, troubleshooting, and infrastructure maintenance.</p>
+                            <ul class="service-features">
+                                <li><span class="check-mark">✓</span> 24/7 Support</li>
+                                <li><span class="check-mark">✓</span> System Monitoring</li>
+                                <li><span class="check-mark">✓</span> Hardware/Software Troubleshooting</li>
+                                <li><span class="check-mark">✓</span> Network Management</li>
+                            </ul>
+                        </div>
+
+                        <!-- Cloud Solutions & Migration -->
+                        <div class="service-offer-card">
+                            <div class="service-offer-image">
+                                <svg viewBox="0 0 200 120" class="service-svg">
+                                    <rect width="200" height="120" fill="#f0f8ff" rx="8"/>
+                                    <ellipse cx="100" cy="40" rx="60" ry="20" fill="#007bff" opacity="0.8"/>
+                                    <ellipse cx="100" cy="35" rx="50" ry="15" fill="#0056b3"/>
+                                    <rect x="70" y="60" width="60" height="40" fill="#e9ecef" rx="4"/>
+                                    <rect x="75" y="65" width="15" height="10" fill="#007bff" rx="1"/>
+                                    <rect x="95" y="65" width="15" height="10" fill="#007bff" rx="1"/>
+                                    <rect x="115" y="65" width="10" height="10" fill="#007bff" rx="1"/>
+                                    <rect x="75" y="80" width="25" height="8" fill="#28a745" rx="1"/>
+                                    <rect x="105" y="80" width="20" height="8" fill="#28a745" rx="1"/>
+                                    <path d="M100 50 L100 60" stroke="#6c757d" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                </svg>
+                            </div>
+                            <h3>Cloud Solutions & Migration</h3>
+                            <p>Azure cloud migration, implementation, and management services using security best practices.</p>
+                            <ul class="service-features">
+                                <li><span class="check-mark">✓</span> Azure Migration</li>
+                                <li><span class="check-mark">✓</span> Cloud Architecture</li>
+                                <li><span class="check-mark">✓</span> IAM Implementation</li>
+                                <li><span class="check-mark">✓</span> Security Configuration</li>
+                            </ul>
+                        </div>
+
+                        <!-- Cybersecurity & Compliance -->
+                        <div class="service-offer-card">
+                            <div class="service-offer-image">
+                                <svg viewBox="0 0 200 120" class="service-svg">
+                                    <rect width="200" height="120" fill="#1a1a2e" rx="8"/>
+                                    <rect x="20" y="20" width="160" height="80" fill="#16213e" rx="4"/>
+                                    <rect x="30" y="30" width="140" height="2" fill="#00ff41" rx="1"/>
+                                    <rect x="30" y="40" width="120" height="2" fill="#00ff41" rx="1"/>
+                                    <rect x="30" y="50" width="100" height="2" fill="#00ff41" rx="1"/>
+                                    <rect x="30" y="60" width="80" height="2" fill="#00ff41" rx="1"/>
+                                    <rect x="30" y="70" width="60" height="2" fill="#00ff41" rx="1"/>
+                                    <circle cx="150" cy="50" r="15" fill="#007bff" opacity="0.8"/>
+                                    <path d="M145 50l3 3 6-6" stroke="white" stroke-width="2" fill="none"/>
+                                    <rect x="40" y="85" width="120" height="8" fill="#ffc107" rx="2"/>
+                                </svg>
+                            </div>
+                            <h3>Cybersecurity & Compliance</h3>
+                            <p>Security assessments, implementation of security baselines, and compliance frameworks.</p>
+                            <ul class="service-features">
+                                <li><span class="check-mark">✓</span> Security Audits</li>
+                                <li><span class="check-mark">✓</span> NIST/CIS Implementation</li>
+                                <li><span class="check-mark">✓</span> SOC Compliance</li>
+                                <li><span class="check-mark">✓</span> Risk Assessment</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- Testimonials Section -->
+            <section id="testimonials" class="testimonials-section">
+                <div class="container">
+                    <h2 class="section-title">Client Testimonials</h2>
+                    <p class="section-subtitle">Don't just take my word for it. Here's what my clients have to say about my services and expertise.</p>
+                    
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">"Working with this professional was a game-changer for our cybersecurity infrastructure. Their thorough assessment identified vulnerabilities we weren't aware of, and the implementation plan was clear and effective."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" alt="Michael Johnson">
+                                </div>
+                                <div class="author-info">
+                                    <h4 class="author-name">Michael Johnson</h4>
+                                    <p class="author-title">CTO, TechSolutions Inc.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">"The IT infrastructure setup was flawless. Everything was delivered on time and within budget. The ongoing support has been exceptional, with quick response times and effective solutions to any issues that arise."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" alt="Sarah Williams">
+                                </div>
+                                <div class="author-info">
+                                    <h4 class="author-name">Sarah Williams</h4>
+                                    <p class="author-title">Operations Manager, Global Enterprises</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">"The security training sessions were engaging and informative. Our team now has a much better understanding of cybersecurity best practices and how to identify potential threats. Highly recommended!"</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" alt="David Chen">
+                                </div>
+                                <div class="author-info">
+                                    <h4 class="author-name">David Chen</h4>
+                                    <p class="author-title">HR Director, Innovative Solutions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Blog Section -->
+            <section id="blog" class="blog-section">
+                <div class="container">
+                    <h2 class="section-title">Recommended Articles</h2>
+                    
+                    <div class="blog-grid">
+                        <!-- Featured Article -->
+                        <article class="blog-card featured">
+                            <div class="blog-image">
+                                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Zero Trust Architecture">
+                                <div class="blog-category">Cybersecurity</div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span class="blog-date">Jan 15, 2024</span>
+                                    <span class="blog-read-time">8 min read</span>
+                                </div>
+                                <h3 class="blog-title">Implementing Zero Trust Architecture in Modern IT Infrastructure</h3>
+                                <p class="blog-excerpt">A comprehensive guide to implementing Zero Trust security principles in enterprise environments, covering identity verification, device security, and network segmentation.</p>
+                                <a href="https://www.paloaltonetworks.com/cyberpedia/what-is-a-zero-trust-architecture" class="blog-read-more">Read More</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Regular Articles -->
+                        <article class="blog-card">
+                            <div class="blog-image">
+                                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Cloud Computing">
+                                <div class="blog-category">Cloud Computing</div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span class="blog-date">Dec 28, 2023</span>
+                                    <span class="blog-read-time">6 min read</span>
+                                </div>
+                                <h3 class="blog-title">Azure AD vs Active Directory: Understanding the Differences</h3>
+                                <p class="blog-excerpt">Exploring the key differences between traditional Active Directory and Azure Active Directory, and when to use each in your infrastructure.</p>
+                                <a href="https://techcommunity.microsoft.com/blog/itopstalkblog/what-are-the-differences-between-azure-active-directory-and-azure-active-directo/917392" class="blog-read-more">Read Article</a>
+                            </div>
+                        </article>
+                        
+                        <article class="blog-card">
+                            <div class="blog-image">
+                                <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="IT Support">
+                                <div class="blog-category">IT Operations</div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span class="blog-date">Dec 16, 2023</span>
+                                    <span class="blog-read-time">5 min read</span>
+                                </div>
+                                <h3 class="blog-title">Best Practices for IT Support Ticket Management</h3>
+                                <p class="blog-excerpt">Strategies for effective ticket management, improving response times, and enhancing customer satisfaction in IT support operations.</p>
+                                <a href="https://devrev.ai/blog/ticket-management" class="blog-read-more">Read Article</a>
+                            </div>
+                        </article>
+                        
+                        <article class="blog-card">
+                            <div class="blog-image">
+                                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Programming">
+                                <div class="blog-category">Programming</div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span class="blog-date">Nov 30, 2023</span>
+                                    <span class="blog-read-time">7 min read</span>
+                                </div>
+                                <h3 class="blog-title">Python Automation for System Administration</h3>
+                                <p class="blog-excerpt">How to leverage Python scripting to automate routine system administration tasks and improve operational efficiency.</p>
+                                <a href="https://medium.com/@alexfoleydevops/python-automation-scripting-and-task-automation-b7d915246e8" class="blog-read-more">Read Article</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="contact-section">
+                <div class="container">
+                    <div class="contact-header">
+                        <h2 class="section-title">Let's Work Together</h2>
+                        <p class="section-subtitle">Ready to bring your next project to life? I'd love to hear about your ideas and discuss how we can collaborate.</p>
+                    </div>
+                    
+                    <div class="contact-grid">
+                        <!-- Contact Information Cards -->
+                        <div class="contact-info-section">
+                            <div class="contact-cards">
+                                <div class="contact-card">
+                                    <div class="contact-card-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                            <polyline points="22,6 12,13 2,6"/>
+                                        </svg>
+                                    </div>
+                                    <div class="contact-card-content">
+                                        <h4>Email Address</h4>
+                                        <p>ebenezer@europe.com</p>
+                                        <a href="mailto:ebenezer.iluyomade@gmail.com" class="contact-link">Send Email</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-card">
+                                    <div class="contact-card-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="contact-card-content">
+                                        <h4>Phone Number</h4>
+                                        <p>+48 730 xxx xxx</p>
+                                        <a href="tel:+48720871738" class="contact-link">Call Now</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-card">
+                                    <div class="contact-card-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                            <circle cx="12" cy="10" r="3"/>
+                                        </svg>
+                                    </div>
+                                    <div class="contact-card-content">
+                                        <h4>Location</h4>
+                                        <p>Poland</p>
+                                        <span class="contact-note">Available for remote work</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-card">
+                                    <div class="contact-card-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                            <rect x="2" y="9" width="4" height="12"/>
+                                            <circle cx="4" cy="4" r="2"/>
+                                        </svg>
+                                    </div>
+                                    <div class="contact-card-content">
+                                        <h4>LinkedIn Profile</h4>
+                                        <p>Professional Network</p>
+                                        <a href="https://www.linkedin.com/in/ebenezer-iluyomade-907639201/" class="contact-link" target="_blank">Connect</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Quick Actions -->
+                            <div class="quick-actions-section">
+                                <h3>Quick Actions</h3>
+                                <div class="action-buttons">
+                                    <a href="mailto:ebenezer@europe.com" class="action-btn primary">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                            <polyline points="22,6 12,13 2,6"/>
+                                        </svg>
+                                        <span>Email Me</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Form -->
+                        <div class="contact-form-section">
+                            <div class="form-container">
+                                <div class="form-header">
+                                    <h3>Send Me a Message</h3>
+                                    <p>Have a specific project in mind? Fill out the form below and I'll get back to you within 24 hours.</p>
+                                </div>
+                                
+                                <!-- Display Django messages -->
+                                {% if messages %}
+                                    <div class="messages">
+                                        {% for message in messages %}
+                                            <div class="alert alert-{{ message.tags }}">
+                                                {{ message }}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                                
+                                <form class="contact-form" id="contact-form" action="{% url 'contact' %}" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-grid">
+                                        <div class="form-field">
+                                            <label for="name">Full Name</label>
+                                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="email">Email Address</label>
+                                            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-field">
+                                        <label for="company">Company (Optional)</label>
+                                        <input type="text" id="company" name="company" placeholder="Your company name">
+                                    </div>
+                                    
+                                    <div class="form-field">
+                                        <label for="subject">Subject</label>
+                                        <select id="subject" name="subject" required>
+                                            <option value="">Select a topic</option>
+                                            <option value="project">New Project Inquiry</option>
+                                            <option value="consultation">IT Consultation</option>
+                                            <option value="collaboration">Partnership/Collaboration</option>
+                                            <option value="support">Technical Support</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-field">
+                                        <label for="message">Message</label>
+                                        <textarea id="message" name="message" rows="6" placeholder="Tell me about your project, requirements, timeline, and any specific questions you have..." required></textarea>
+                                    </div>
+                                    
+                                    <div class="form-actions">
+                                        <button type="submit" class="submit-btn">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                <line x1="22" y1="2" x2="11" y2="13"/>
+                                                <polygon points="22,2 15,22 11,13 2,9 22,2"/>
+                                            </svg>
+                                            <span>Send Message</span>
+                                        </button>
+                                        <p class="form-note">I'll respond within 24 hours</p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Ebenezer Iluyomade. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- Load JavaScript asynchronously for better performance -->
+    <script async src="{% static 'responsive-images.js' %}"></script>
+    <script async src="{% static 'image-optimizer.js' %}"></script>
+    <script async src="{% static 'script-optimized.js' %}"></script>
+    
+    <!-- Web Vitals and Performance Monitoring -->
+    <script>
+        // Web Vitals tracking
+        function trackWebVitals() {
+            if ('web-vital' in window) {
+                new PerformanceObserver((entryList) => {
+                    for (const entry of entryList.getEntries()) {
+                        console.log(`${entry.name}: ${entry.value}`);
+                        // Send to analytics if needed
+                    }
+                }).observe({entryTypes: ['measure']});
+            }
+        }
+        
+        // Service Worker Registration
+         if ('serviceWorker' in navigator) {
+             window.addEventListener('load', () => {
+                 navigator.serviceWorker.register('/static/sw.js')
+                     .then(registration => {
+                         console.log('SW registered: ', registration);
+                         
+                         // Check for updates
+                         registration.addEventListener('updatefound', () => {
+                             const newWorker = registration.installing;
+                             newWorker.addEventListener('statechange', () => {
+                                 if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                     // New content available, show update notification
+                                     if (confirm('New content available! Reload to update?')) {
+                                         window.location.reload();
+                                     }
+                                 }
+                             });
+                         });
+                     })
+                     .catch(error => {
+                         console.log('SW registration failed: ', error);
+                     });
+             });
+         }
+         
+         // Performance monitoring
+         window.addEventListener('load', () => {
+             // Track page load time
+             const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+             console.log(`Page load time: ${loadTime}ms`);
+             
+             // Track First Contentful Paint
+             new PerformanceObserver((entryList) => {
+                 for (const entry of entryList.getEntries()) {
+                     if (entry.name === 'first-contentful-paint') {
+                         console.log(`FCP: ${entry.startTime}ms`);
+                     }
+                 }
+             }).observe({entryTypes: ['paint']});
+             
+             trackWebVitals();
+         });
+         
+         // Preload critical resources on interaction
+         document.addEventListener('mouseenter', () => {
+             const criticalImages = [
+                 '{% static "assets/IMG_9169.JPG" %}'
+             ];
+             
+             if (window.imageOptimizer) {
+                 window.imageOptimizer.preloadCriticalImages(criticalImages);
+             }
+         }, { once: true });
+         
+         // Connection-aware loading
+         if ('connection' in navigator) {
+             const connection = navigator.connection;
+             if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+                 // Reduce image quality for slow connections
+                 document.documentElement.classList.add('slow-connection');
+             }
+         }
+         
+         // Simple Progress Bar Animation
+         function animateLanguagesSection() {
+             const progressBars = document.querySelectorAll('.progress-fill');
+             
+             // Animate progress bars
+             const animateProgressBars = () => {
+                 progressBars.forEach((bar, index) => {
+                     const percentage = bar.getAttribute('data-percentage') || '0';
+                     setTimeout(() => {
+                         bar.style.width = percentage + '%';
+                     }, index * 300);
+                 });
+             };
+             
+             // Intersection Observer for scroll-triggered animations
+             const observer = new IntersectionObserver((entries) => {
+                 entries.forEach(entry => {
+                     if (entry.isIntersecting) {
+                         setTimeout(() => {
+                             animateProgressBars();
+                         }, 200);
+                         observer.unobserve(entry.target);
+                     }
+                 });
+             }, { threshold: 0.3 });
+             
+             const languagesSection = document.querySelector('.advanced-languages');
+             if (languagesSection) {
+                 observer.observe(languagesSection);
+             }
+         }
+         
+         // Initialize animation when DOM is loaded
+         document.addEventListener('DOMContentLoaded', animateLanguagesSection);
+    </script>
+</body>
+</html>
