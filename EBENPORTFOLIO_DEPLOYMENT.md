@@ -1,6 +1,6 @@
-# 🚀 Deploy ebenportfolio.eu - Complete Guide
+# 🚀 Deploy ebenezerportfolio.com - Complete Guide
 
-This guide will help you deploy your Django portfolio to **ebenportfolio.eu** and make it live!
+This guide will help you deploy your Django portfolio to **ebenezerportfolio.com** and make it live!
 
 ## 🎯 Quick Start (Recommended: Heroku)
 
@@ -41,7 +41,7 @@ heroku addons:create heroku-postgresql:mini
 # Initialize git if not done
 git init
 git add .
-git commit -m "Initial deployment for ebenportfolio.eu"
+git commit -m "Initial deployment for ebenezerportfolio.com"
 
 # Add Heroku remote and deploy
 heroku git:remote -a ebenportfolio
@@ -60,8 +60,8 @@ heroku run python manage.py createsuperuser
 ### Step 7: Add Your Custom Domain
 ```bash
 # Add your domains to Heroku
-heroku domains:add ebenportfolio.eu
-heroku domains:add www.ebenportfolio.eu
+heroku domains:add ebenezerportfolio.com
+heroku domains:add www.ebenezerportfolio.com
 
 # Get the DNS target
 heroku domains
@@ -70,7 +70,7 @@ heroku domains
 
 ### Step 8: Configure DNS at Your Domain Registrar
 
-Log into your domain registrar (where you bought ebenportfolio.eu) and add these DNS records:
+Log into your domain registrar (where you bought ebenezerportfolio.com) and add these DNS records:
 
 **DNS Records to Add:**
 ```
@@ -105,8 +105,8 @@ heroku certs:auto:enable
 ### Step 10: Test Your Website
 
 Wait 5-30 minutes for DNS propagation, then visit:
-- https://ebenportfolio.eu
-- https://www.ebenportfolio.eu
+- https://ebenezerportfolio.com
+- https://www.ebenezerportfolio.com
 
 ## 🔧 Alternative: DigitalOcean App Platform
 
@@ -123,7 +123,7 @@ Wait 5-30 minutes for DNS propagation, then visit:
    DJANGO_SETTINGS_MODULE=my_Portfolio.production_settings
    ```
 5. **Add PostgreSQL Database** (in Components section)
-6. **Add Custom Domain:** ebenportfolio.eu
+6. **Add Custom Domain:** ebenezerportfolio.com
 7. **Configure DNS** as provided by DigitalOcean
 
 ## 🌐 DNS Configuration Examples
@@ -144,7 +144,7 @@ Wait 5-30 minutes for DNS propagation, then visit:
 
 ## ✅ Post-Deployment Checklist
 
-- [ ] Website loads at https://ebenportfolio.eu
+- [ ] Website loads at https://ebenezerportfolio.com
 - [ ] SSL certificate is active (green lock icon)
 - [ ] All pages work correctly
 - [ ] Static files (CSS, JS, images) load properly
@@ -160,7 +160,7 @@ Wait 5-30 minutes for DNS propagation, then visit:
 heroku logs --tail
 
 # Check DNS propagation
-nslookup ebenportfolio.eu
+nslookup ebenezerportfolio.com
 ```
 
 ### Static Files Not Loading:
@@ -211,8 +211,8 @@ heroku run python manage.py migrate
 ## 🎉 Success!
 
 Once completed, your portfolio will be live at:
-- **https://ebenportfolio.eu** ✨
-- **https://www.ebenportfolio.eu** ✨
+- **https://ebenezerportfolio.com** ✨
+- **https://www.ebenezerportfolio.com** ✨
 
 With automatic SSL, fast loading, and professional hosting!
 

@@ -9,14 +9,8 @@ DEBUG = False
 # Security settings
 SECRET_KEY = config('SECRET_KEY', default='your-secret-key-here')
 
-# Allowed hosts - configured for ebenportfolio.eu and Heroku
-ALLOWED_HOSTS = [
-    'ebenportfolio.eu',
-    'www.ebenportfolio.eu',
-    'ebenportfolio-78671a1d9553.herokuapp.com',
-    'localhost',
-    '127.0.0.1',
-]
+# Allowed hosts - configured for ebenezerportfolio.com and Heroku
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1').split(',')
 
 # Database configuration for production
 # Use SQLite for local production testing, PostgreSQL for cloud deployment
@@ -101,3 +95,5 @@ EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='noreply@ebenezerportfolio.com')
+ADMIN_EMAIL = config('ADMIN_EMAIL', default='admin@ebenezerportfolio.com')

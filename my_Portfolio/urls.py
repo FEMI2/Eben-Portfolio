@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from django.views.generic import TemplateView
 from django.http import HttpResponse
 from backend import views
+from backend.views import SendFormEmail
 
 
 def vite_client_handler(request):
@@ -30,7 +31,8 @@ def vite_client_handler(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='index.html'), name='index'),
+    path('', views.index, name='index'),
+    path('contact/', SendFormEmail.as_view(), name='contact'),
     path('@vite/client', vite_client_handler, name='vite_client'),
 ]
 

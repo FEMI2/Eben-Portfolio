@@ -440,7 +440,7 @@
             </section>
 
             <!-- Services I Offer Section -->
-            <section class="services-offer-section">
+            <section id="services" class="services-offer-section">
                 <div class="container">
                     <h2 class="section-title">Services I Offer</h2>
                     <p class="section-subtitle">Comprehensive IT solutions tailored to your business needs. From infrastructure management to custom development, I provide expert services backed by industry certifications and proven experience.</p>
@@ -750,7 +750,19 @@
                                     <p>Have a specific project in mind? Fill out the form below and I'll get back to you within 24 hours.</p>
                                 </div>
                                 
-                                <form class="contact-form" id="contact-form">
+                                <!-- Display Django messages -->
+                                {% if messages %}
+                                    <div class="messages">
+                                        {% for message in messages %}
+                                            <div class="alert alert-{{ message.tags }}">
+                                                {{ message }}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                                
+                                <form class="contact-form" id="contact-form" action="{% url 'contact' %}" method="post">
+                                    {% csrf_token %}
                                     <div class="form-grid">
                                         <div class="form-field">
                                             <label for="name">Full Name</label>

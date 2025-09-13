@@ -230,10 +230,7 @@ function initContactForm() {
     const contactForm = document.getElementById('contact-form');
     if (!contactForm) return;
     
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const formData = new FormData(contactForm);
+    contactForm.addEventListener('submit', function(e) {
         const submitButton = contactForm.querySelector('button[type="submit"]');
         const originalText = submitButton.innerHTML;
         
@@ -246,22 +243,8 @@ function initContactForm() {
         `;
         submitButton.disabled = true;
         
-        try {
-            // Simulate form submission (replace with actual endpoint)
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            
-            // Show success message
-            showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-            contactForm.reset();
-            
-        } catch (error) {
-            // Show error message
-            showNotification('Failed to send message. Please try again.', 'error');
-        } finally {
-            // Reset button
-            submitButton.innerHTML = originalText;
-            submitButton.disabled = false;
-        }
+        // Allow the form to submit naturally to Django backend
+        // The form will be processed by the SendFormEmail view
     });
     
     // Form validation

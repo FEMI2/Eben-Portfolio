@@ -18,28 +18,51 @@ import mimetypes
 
 # Create your views here.
 def index(request):
-   return render(request, 'backend/index.html')
+   return render(request, 'index.html')
 
 class SendFormEmail(View):
 
-    def  get(self, request):
+    def post(self, request):
+        # Get the form data from POST request
+        name = request.POST.get('name', '')
+        email = request.POST.get('email', '')
+        message = request.POST.get('message', '')
 
-        # Get the form data 
-        name = request.GET.get('name', None)
-        email = request.GET.get('email', None)
-        message = request.GET.get('message', None)
+        # Validate required fields
+        if not all([name, email, message]):
+            messages.error(request, 'All fields are required.')
+            return redirect('index')
 
-        send_mail(
-            'Subject - New Contact Me Message From Your Website', 
-            'Hello ' + name + ',\n' + message, 
-            'Ebenezer@europe.com', # Admin
-            [
-                email,
-            ]
-        )
+        # Send email to admin with contact form details
+        admin_email = getattr(settings, 'ADMIN_EMAIL', 'admin@example.com')
+        
+        email_subject = f'New Contact Form Message from {name}'
+        email_body = f'''New contact form submission:
 
-        # Redirect to same page after form submit
-        messages.success(request, ('Email sent successfully.'))
+Name: {name}
+Email: {email}
+Message:
+{message}
+
+Reply to: {email}'''
+        
+        try:
+            send_mail(
+                email_subject,
+                email_body,
+                settings.DEFAULT_FROM_EMAIL,
+                [admin_email],
+                fail_silently=False,
+            )
+            messages.success(request, 'Thank you for your message! I will get back to you soon.')
+        except Exception as e:
+            messages.error(request, 'Sorry, there was an error sending your message. Please try again later.')
+            print(f'Email sending error: {e}')
+
+        return redirect('index')
+
+    def get(self, request):
+        # Redirect GET requests to the main page
         return redirect('index')
 
 
