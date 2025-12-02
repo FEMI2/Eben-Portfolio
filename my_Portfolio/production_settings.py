@@ -9,8 +9,17 @@ DEBUG = False
 # Security settings
 SECRET_KEY = config('SECRET_KEY', default='your-secret-key-here')
 
-# Allowed hosts - configured for ebenezerportfolio.com and Heroku
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1').split(',')
+# Allowed hosts
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='ebenezerportfolio.com,www.ebenezerportfolio.com,.onrender.com').split(',')
+
+# CSRF trusted origins
+_csrf_env = config('CSRF_TRUSTED_ORIGINS', default='')
+if _csrf_env:
+    CSRF_TRUSTED_ORIGINS = [o.strip() for o in _csrf_env.split(',') if o.strip()]
+else:
+    _hosts = [h.strip() for h in ALLOWED_HOSTS if h.strip()]
+    CSRF_TRUSTED_ORIGINS = [f'https://{h}' for h in _hosts] + [f'http://{h}' for h in _hosts]
+    CSRF_TRUSTED_ORIGINS += ['https://*.onrender.com']
 
 # Database configuration for production
 # Use SQLite for local production testing, PostgreSQL for cloud deployment
@@ -97,3 +106,5 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='noreply@ebenezerportfolio.com')
 ADMIN_EMAIL = config('ADMIN_EMAIL', default='admin@ebenezerportfolio.com')
+if not EMAIL_HOST_USER or not EMAIL_HOST_PASSWORD:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
