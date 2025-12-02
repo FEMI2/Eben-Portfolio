@@ -129,6 +129,8 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 #-----------------------------------------------------
 STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static'),
+        os.path.normpath(os.path.join(BASE_DIR, '..', 'static')),
+        os.path.normpath(os.path.join(BASE_DIR, '..', 'backend', 'static')),
 ]
 
 CACHES = {
