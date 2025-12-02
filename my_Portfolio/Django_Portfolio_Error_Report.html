@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Light'}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Light'; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1"># Django Portfolio Error Report</p>
+<p class="p2"><br></p>
+<p class="p1">**Project:** Personal Portfolio Website <span class="Apple-converted-space"> </span></p>
+<p class="p1">**Date:** September 10, 2025 <span class="Apple-converted-space"> </span></p>
+<p class="p1">**Developer:** Ebenezer Iluyomade <span class="Apple-converted-space"> </span></p>
+<p class="p1">**Framework:** Django <span class="Apple-converted-space"> </span></p>
+<p class="p2"><br></p>
+<p class="p1">---</p>
+<p class="p2"><br></p>
+<p class="p1">## Executive Summary</p>
+<p class="p2"><br></p>
+<p class="p1">This report documents all errors encountered during the setup and deployment of a Django-based personal portfolio website, along with their root causes and implemented solutions. The project involved migrating from a static HTML portfolio to a Django web application with proper static file handling.</p>
+<p class="p2"><br></p>
+<p class="p1">---</p>
+<p class="p2"><br></p>
+<p class="p1">## Error Log and Solutions</p>
+<p class="p2"><br></p>
+<p class="p1">### 1. Port Conflict Error</p>
+<p class="p2"><br></p>
+<p class="p1">**Error Type:** Server Startup Failure <span class="Apple-converted-space"> </span></p>
+<p class="p1">**Timestamp:** Initial deployment attempt <span class="Apple-converted-space"> </span></p>
+<p class="p2"><br></p>
+<p class="p1">**Error Message:**</p>
+<p class="p1">```</p>
+<p class="p1">Error: That port is already in use.</p>
+<p class="p1">```</p>
+<p class="p2"><br></p>
+<p class="p1">**Root Cause:**</p>
+<p class="p1">Attempted to run Django development server on port 8000, which was already occupied by another process.</p>
+<p class="p2"><br></p>
+<p class="p1">**Solution Implemented:**</p>
+<p class="p1">- Changed server port from 8000 to 8001</p>
+<p class="p1">- Command used: `python manage.py runserver 8001`</p>
+<p class="p1">- Verified port availability before deployment</p>
+<p class="p2"><br></p>
+<p class="p1">**Status:** ✅ Resolved</p>
+<p class="p2"><br></p>
+<p class="p1">---</p>
+<p class="p2"><br></p>
+<p class="p1">### 2. Static Files Not Served (404 Errors)</p>
+<p class="p2"><br></p>
+<p class="p1">**Error Type:** Static File Serving Failure <span class="Apple-converted-space"> </span></p>
+<p class="p1">**Timestamp:** After initial server startup <span class="Apple-converted-space"> </span></p>
+<p class="p2"><br></p>
+<p class="p1">**Error Messages:**</p>
+<p class="p1">```</p>
+<p class="p1">"GET /static/styles.css HTTP/1.1" 404</p>
+<p class="p1">"GET /static/script.js HTTP/1.1" 404</p>
+<p class="p1">```</p>
+<p class="p2"><br></p>
+<p class="p1">**Root Cause:**</p>
+<p class="p1">Incorrect static files configuration in Django settings and URL patterns. The `STATIC_ROOT` was being used instead of `STATICFILES_DIRS` for development.</p>
+<p class="p2"><br></p>
+<p class="p1">**Solution Implemented:**</p>
+<p class="p1">1. **Updated `urls.py`:**</p>
+<p class="p1"><span class="Apple-converted-space">   </span>```python</p>
+<p class="p1"><span class="Apple-converted-space">   </span># Changed from:</p>
+<p class="p1"><span class="Apple-converted-space">   </span>urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)</p>
+<p class="p1"><span class="Apple-converted-space">   </span># To:</p>
+<p class="p1"><span class="Apple-converted-space">   </span>urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])</p>
+<p class="p1"><span class="Apple-converted-space">   </span>```</p>
+<p class="p2"><br></p>
+<p class="p1">2. **Updated `settings.py`:**</p>
+<p class="p1"><span class="Apple-converted-space">   </span>```python</p>
+<p class="p1"><span class="Apple-converted-space">   </span># Changed from:</p>
+<p class="p1"><span class="Apple-converted-space">   </span>DEBUG = os.environ.get('DEBUG', "false").lower() == 'true'</p>
+<p class="p1"><span class="Apple-converted-space">   </span># To:</p>
+<p class="p1"><span class="Apple-converted-space">   </span>DEBUG = True</p>
+<p class="p1"><span class="Apple-converted-space">   </span>```</p>
+<p class="p2"><br></p>
+<p class="p1">**Technical Details:**</p>
+<p class="p1">- `STATIC_ROOT` is used for production (collectstatic)</p>
+<p class="p1">- `STATICFILES_DIRS` is used for development</p>
+<p class="p1">- Django only serves static files when `DEBUG = True`</p>
+<p class="p2"><br></p>
+<p class="p1">**Status:** ✅ Resolved</p>
+<p class="p2"><br></p>
+<p class="p1">---</p>
+<p class="p2"><br></p>
+<p class="p1">### 3. External Image URLs Treated as Static Files</p>
+<p class="p2"><br></p>
+<p class="p1">**Error Type:** Template Static Tag Misuse <span class="Apple-converted-space"> </span></p>
+<p class="p1">**Timestamp:** After static files configuration fix <span class="Apple-converted-space"> </span></p>
+<p class="p2"><br></p>
+<p class="p1">**Error Messages:**</p>
+<p class="p1">```</p>
+<p class="p1">"GET /static/https%3A/images.unsplash.com/photo-1507003211169-0a1dd7228f2d%3F... HTTP/1.1" 404</p>
+<p class="p1">"GET /static/https%3A/images.unsplash.com/photo-1580489944761-15a19d654956%3F... HTTP/1.1" 404</p>
+<p class="p1">```</p>
+<p class="p2"><br></p>
+<p class="p1">**Root Cause:**</p>
+<p class="p1">External Unsplash image URLs were incorrectly wrapped with Django's `{% static %}` template tag, causing Django to treat them as local static files.</p>
+<p class="p2"><br></p>
+<p class="p1">**Problematic Code:**</p>
+<p class="p1">```html</p>
+<p class="p1">&lt;img src="{% static 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?...' %}" alt="Michael Johnson"&gt;</p>
+<p class="p1">```</p>
+<p class="p2"><br></p>
+<p class="p1">**Solution Implemented:**</p>
+<p class="p1">Removed `{% static %}` tags from all external URLs in the template:</p>
+<p class="p2"><br></p>
+<p class="p1">```html</p>
+<p class="p1">&lt;!-- Before --&gt;</p>
+<p class="p1">&lt;img src="{% static 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?...' %}" alt="Michael Johnson"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- After --&gt;</p>
+<p class="p1">&lt;img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?..." alt="Michael Johnson"&gt;</p>
+<p class="p1">```</p>
+<p class="p2"><br></p>
+<p class="p1">**Files Modified:**</p>
+<p class="p1">- `/backend/Templates/index.html` (7 image URLs corrected)</p>
+<p class="p2"><br></p>
+<p class="p1">**Status:** ✅ Resolved</p>
+<p class="p2"><br></p>
+<p class="p1">---</p>
+<p class="p2"><br></p>
+<p class="p1">### 4. Minor Vite Client Warning</p>
+<p class="p2"><br></p>
+<p class="p1">**Error Type:** Development Tool Warning <span class="Apple-converted-space"> </span></p>
+<p class="p1">**Timestamp:** During final testing <span class="Apple-converted-space"> </span></p>
+<p class="p2"><br></p>
+<p class="p1">**Error Message:**</p>
+<p class="p1">```</p>
+<p class="p1">Not Found: /@vite/client</p>
+<p class="p1">WARNING:django.request:Not Found: /@vite/client</p>
+<p class="p1">```</p>
+<p class="p2"><br></p>
+<p class="p1">**Root Cause:**</p>
+<p class="p1">Browser attempting to load Vite development client (common in modern frontend tooling).</p>
+<p class="p2"><br></p>
+<p class="p1">**Impact:** Low - Does not affect functionality</p>
+<p class="p2"><br></p>
+<p class="p1">**Status:** ⚠️ Non-critical (can be ignored in Django-only projects)</p>
+<p class="p2"><br></p>
+<p class="p1">---</p>
+<p class="p2"><br></p>
+<p class="p1">## Configuration Summary</p>
+<p class="p2"><br></p>
+<p class="p1">### Final Working Configuration</p>
+<p class="p2"><br></p>
+<p class="p1">**Django Settings (`settings.py`):**</p>
+<p class="p1">```python</p>
+<p class="p1">DEBUG = True</p>
+<p class="p1">STATIC_URL = '/static/'</p>
+<p class="p1">STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')</p>
+<p class="p1">STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]</p>
+<p class="p1">```</p>
+<p class="p2"><br></p>
+<p class="p1">**URL Configuration (`urls.py`):**</p>
+<p class="p1">```python</p>
+<p class="p1">if settings.DEBUG:</p>
+<p class="p1"><span class="Apple-converted-space">    </span>urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])</p>
+<p class="p1">```</p>
+<p class="p2"><br></p>
+<p class="p1">**Server Command:**</p>
+<p class="p1">```bash</p>
+<p class="p1">python manage.py runserver 8001</p>
+<p class="p1">```</p>
+<p class="p2"><br></p>
+<p class="p1">---</p>
+<p class="p2"><br></p>
+<p class="p1">## Lessons Learned</p>
+<p class="p2"><br></p>
+<p class="p1">### Best Practices Identified</p>
+<p class="p2"><br></p>
+<p class="p1">1. **Static Files in Development:**</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Always use `STATICFILES_DIRS` for development</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Ensure `DEBUG = True` for static file serving</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Use `STATIC_ROOT` only for production deployments</p>
+<p class="p2"><br></p>
+<p class="p1">2. **Template Static Tags:**</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Only use `{% static %}` for local static files</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- External URLs should be used directly without static tags</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Validate all image sources during development</p>
+<p class="p2"><br></p>
+<p class="p1">3. **Port Management:**</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Check port availability before deployment</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Use non-standard ports (8001, 8080) to avoid conflicts</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Document port usage for team coordination</p>
+<p class="p2"><br></p>
+<p class="p1">### Development Workflow Improvements</p>
+<p class="p2"><br></p>
+<p class="p1">1. **Error Monitoring:**</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Monitor Django development server logs continuously</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Test all static resources after configuration changes</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Validate external resource loading</p>
+<p class="p2"><br></p>
+<p class="p1">2. **Configuration Management:**</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Separate development and production settings</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Use environment variables for sensitive configurations</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Document all configuration changes</p>
+<p class="p2"><br></p>
+<p class="p1">---</p>
+<p class="p2"><br></p>
+<p class="p1">## Final Status</p>
+<p class="p2"><br></p>
+<p class="p1">**✅ All Critical Errors Resolved**</p>
+<p class="p2"><br></p>
+<p class="p1">- Django development server running successfully on port 8001</p>
+<p class="p1">- All local static files (CSS, JS, images) loading correctly</p>
+<p class="p1">- External Unsplash images loading directly from CDN</p>
+<p class="p1">- Portfolio website fully functional with no browser errors</p>
+<p class="p1">- Application ready for production deployment</p>
+<p class="p2"><br></p>
+<p class="p1">---</p>
+<p class="p2"><br></p>
+<p class="p1">## Recommendations for Future Development</p>
+<p class="p2"><br></p>
+<p class="p1">1. **Production Deployment:**</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Configure proper static file serving with web server (Nginx/Apache)</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Use `python manage.py collectstatic` for production</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Set `DEBUG = False` in production</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Configure proper database settings</p>
+<p class="p2"><br></p>
+<p class="p1">2. **Performance Optimization:**</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Implement image lazy loading for Unsplash images</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Add CDN for static files in production</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Optimize CSS and JavaScript files</p>
+<p class="p2"><br></p>
+<p class="p1">3. **Security Enhancements:**</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Configure ALLOWED_HOSTS for production</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Implement CSRF protection</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Add security headers</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- Use HTTPS in production</p>
+<p class="p2"><br></p>
+<p class="p1">---</p>
+<p class="p2"><br></p>
+<p class="p1">**Report Generated:** September 10, 2025 <span class="Apple-converted-space"> </span></p>
+<p class="p1">**Total Resolution Time:** ~2 hours <span class="Apple-converted-space"> </span></p>
+<p class="p1">**Severity:** All critical issues resolved successfully</p>
+</body>
+</html>

@@ -139,18 +139,3 @@ While this is a personal portfolio, suggestions and feedback are welcome! Feel f
 **Built with ❤️ by Ebenezer Iluyomade**
 
 *Last updated: January 2024*
-## 🆓 Free Hosting Options
-
-- GitHub Pages (static):
-  - Push this repo to GitHub
-  - In repository settings, enable `Pages` with source `main` branch `/ (root)`
-  - Site becomes available at `https://<your-username>.github.io/<repo-name>/`
-- Render (Django backend):
-  - Keep the project structure and push to GitHub
-  - Import the repo at `render.com` and select `render.yaml`
-  - Set env vars: `DJANGO_SETTINGS_MODULE=my_Portfolio.production_settings`, `SECRET_KEY`, `ALLOWED_HOSTS`
-  - Render builds and serves via `gunicorn`
-
-Files added for hosting:
-- `render.yaml` blueprint for free Django hosting
-- `.env.example` listing required production variables

@@ -13,15 +13,6 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
-from decouple import config
-
-# Load environment variables from .env file
-try:
-    from dotenv import load_dotenv
-    load_dotenv()
-except ImportError:
-    # dotenv not installed, use decouple instead
-    pass
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -170,17 +161,6 @@ else:
     print("Using SQLite database for local development")
 
 
-
-# Email Configuration for Development and Production
-# For Gmail SMTP (you'll need to set up App Password)
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'ebenezer.iluyomade@gmail.com'  # Your Gmail address
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')  # Set this in your .env file
-DEFAULT_FROM_EMAIL = 'ebenezer.iluyomade@gmail.com'
-ADMIN_EMAIL = 'ebenezer.iluyomade@gmail.com'  # Your email where you want to receive messages
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
