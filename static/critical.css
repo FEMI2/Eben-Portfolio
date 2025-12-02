@@ -58,11 +58,12 @@ body {
     display: flex;
     list-style: none;
     gap: 2rem;
+    padding-left: 0;
 }
 
 .nav-link {
     text-decoration: none;
-    color: #64748b;
+    color: #e2e8f0;
     font-weight: 500;
     transition: color 0.3s ease;
 }
@@ -90,6 +91,25 @@ main {
     gap: 4rem;
     align-items: center;
 }
+
+/* Ensure above-the-fold grid works even if main CSS is late */
+main { margin-top: 80px; }
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary { background: #2563eb; color: #fff; }
 
 .hero-title {
     font-size: 3.5rem;
