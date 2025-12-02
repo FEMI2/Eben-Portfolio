@@ -9,15 +9,21 @@ DEBUG = False
 # Security settings
 SECRET_KEY = config('SECRET_KEY', default='your-secret-key-here')
 
-# Allowed hosts
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='ebenezerportfolio.com,www.ebenezerportfolio.com,.onrender.com').split(',')
+_hosts_env = [h.strip() for h in config('ALLOWED_HOSTS', default='').split(',') if h.strip()]
+_default_hosts = {'ebenezerportfolio.com', 'www.ebenezerportfolio.com', '.onrender.com', 'localhost', '127.0.0.1'}
+if not _hosts_env:
+    ALLOWED_HOSTS = list(_default_hosts)
+elif '*' in _hosts_env:
+    ALLOWED_HOSTS = ['*']
+else:
+    ALLOWED_HOSTS = list(set(_hosts_env) | _default_hosts)
 
 # CSRF trusted origins
 _csrf_env = config('CSRF_TRUSTED_ORIGINS', default='')
 if _csrf_env:
     CSRF_TRUSTED_ORIGINS = [o.strip() for o in _csrf_env.split(',') if o.strip()]
 else:
-    _hosts = [h.strip() for h in ALLOWED_HOSTS if h.strip()]
+    _hosts = [h for h in ALLOWED_HOSTS if h and h != '*']
     CSRF_TRUSTED_ORIGINS = [f'https://{h}' for h in _hosts] + [f'http://{h}' for h in _hosts]
     CSRF_TRUSTED_ORIGINS += ['https://*.onrender.com']
 
