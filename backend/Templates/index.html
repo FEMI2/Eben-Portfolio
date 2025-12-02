@@ -24,9 +24,8 @@
     <!-- Critical CSS for faster rendering -->
     <link rel="stylesheet" href="{% static 'critical.css' %}">
     
-    <!-- Non-critical CSS loaded asynchronously -->
-    <link rel="preload" href="{% static 'styles.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{% static 'styles.css' %}"></noscript>
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
     
     <!-- Favicon and icons -->
     <link rel="icon" type="image/svg+xml" href="{% static 'assets/favicon.svg' %}">
