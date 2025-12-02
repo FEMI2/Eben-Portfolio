@@ -153,4 +153,3 @@ While this is a personal portfolio, suggestions and feedback are welcome! Feel f
 
 Files added for hosting:
 - `render.yaml` blueprint for free Django hosting
-- `.env.example` listing required production variables
