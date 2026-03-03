@@ -106,3 +106,6 @@ yarn-error.log*
 *.bak
 *.backup
 *.orig
+
+# Allow static/dist (built frontend assets)
+!static/dist/
