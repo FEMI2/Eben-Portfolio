@@ -93,6 +93,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'backend', 'Templates'),
+            os.path.join(BASE_DIR, 'static', 'dist'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
