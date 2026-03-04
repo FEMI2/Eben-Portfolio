@@ -331,7 +331,7 @@ function App() {
                 <div className="flex items-center space-x-4">
                   <div className="h-px w-12 bg-gradient-to-r from-blue-500 to-transparent"></div>
                   <span className="text-sm text-blue-400 tracking-[0.2em] uppercase font-medium">
-                    BEng, Computer Engineering
+                    Ebenezer Iluyomade
                   </span>
                 </div>
 
