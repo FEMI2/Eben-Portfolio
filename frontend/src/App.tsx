@@ -337,7 +337,7 @@ function App() {
                 </div>
 
                 <h1 
-                  className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-[1.05] tracking-tight"
+                  className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-serif text-white leading-[1.05] tracking-tight"
                   style={{ fontFamily: 'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif' }}
                 >
                   Cloud Systems &
@@ -395,7 +395,7 @@ function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="grid grid-cols-3 gap-8 pt-12 border-t border-white/[0.06]"
+                className="grid grid-cols-2 sm:grid-cols-3 gap-8 pt-12 border-t border-white/[0.06]"
               >
                 {[
                   { value: 3, suffix: '+', label: 'Years Experience' },
