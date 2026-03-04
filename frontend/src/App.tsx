@@ -442,7 +442,7 @@ function App() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
-                  className="absolute -bottom-6 -left-6 right-6 px-6 py-4 bg-[#1a1a1a]/90 backdrop-blur-2xl border border-white/10 rounded-xl shadow-2xl"
+                  className="relative mt-8 px-6 py-4 bg-[#1a1a1a]/90 backdrop-blur-2xl border border-white/10 rounded-xl shadow-2xl"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
