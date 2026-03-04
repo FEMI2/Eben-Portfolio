@@ -1,155 +1,121 @@
-# Ebenezer Iluyomade - Portfolio Website
+# Ebenezer Iluyomade - Personal Portfolio
 
-A modern, responsive portfolio website showcasing my expertise in IT Engineering, Cybersecurity, and Cloud Computing.
+A modern, responsive personal portfolio website built with a **React** frontend and a **Django** backend.
 
-## 🌟 Features
+## 🚀 Live Site
+[ebenezerportfolio.com](https://ebenezerportfolio.com)
 
-- **Modern Design**: Clean, professional layout with smooth animations and hover effects
-- **Responsive**: Fully optimized for desktop, tablet, and mobile devices
-- **Professional Sections**:
-  - Hero section with professional portrait
-  - About me with technical expertise highlights
-  - Skills showcase with progress indicators
-  - Professional experience timeline
-  - Project portfolio with detailed descriptions
-  - Service offerings with pricing tiers
-  - Latest blog articles
-  - Contact form and information
-- **Interactive Elements**: Smooth scrolling navigation, hover animations, and dynamic content
-- **SEO Optimized**: Proper meta tags, semantic HTML, and accessibility features
+## 🛠️ Technology Stack
 
-## 🛠️ Technologies Used
+### Frontend
+- **React 18** (Vite)
+- **TypeScript**
+- **Tailwind CSS** (v4)
+- **Framer Motion** (Animations)
+- **Lucide React** (Icons)
 
-- **HTML5**: Semantic markup and accessibility features
-- **CSS3**: Modern styling with Flexbox, Grid, and animations
-- **JavaScript**: Interactive functionality and smooth scrolling
-- **Responsive Design**: Mobile-first approach with media queries
+### Backend
+- **Django 5.2.6**
+- **WhiteNoise** (Static file serving)
+- **Gunicorn** (WSGI Server)
 
-## 📁 Project Structure
+### Deployment
+- **Platform:** Render
+- **Build Strategy:** Pre-built frontend assets committed to repository to simplify Render Python environment build.
+
+## 📂 Project Structure
 
 ```
-Personal Portfolio/
-├── index.html          # Main HTML file
-├── styles.css          # CSS styling
-├── script.js           # JavaScript functionality
-├── assets/             # Images and icons
-│   ├── IMG_9169.JPG   # Professional portrait
-│   ├── favicon.ico    # Website favicon
-│   ├── favicon.svg    # SVG favicon
-│   └── apple-touch-icon.png
-└── README.md          # Project documentation
+├── frontend/               # React Source Code
+│   ├── src/                # Components, Styles, Assets
+│   └── vite.config.ts      # Vite Configuration (Outputs to ../static/dist)
+│
+├── my_Portfolio/           # Django Project Configuration
+│   ├── settings.py         # Development Settings
+│   ├── production_settings.py # Production Settings (Render)
+│   └── urls.py             # URL Routing (API + Frontend serving)
+│
+├── backend/                # Django App
+│   └── views.py            # Views for serving index.html and API endpoints
+│
+├── static/                 # Static Files
+│   └── dist/               # Compiled React App (Committed to Git)
+│
+├── manage.py               # Django Management Script
+└── render.yaml             # Render Blueprint Configuration
 ```
 
-## 🚀 Getting Started
+## 💻 Local Development
 
 ### Prerequisites
+- Node.js & npm
+- Python 3.12+
 
-- A modern web browser (Chrome, Firefox, Safari, Edge)
-- A local web server (optional, for development)
+### 1. Frontend Development
+To work on the React frontend:
 
-### Installation
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Runs on `http://localhost:3000`.
 
-1. **Clone or download the repository**
-   ```bash
-   git clone <repository-url>
-   cd "Personal Portfolio"
-   ```
+### 2. Backend Integration
+To run the full stack (Django serving React):
 
-2. **Open the website**
-   - **Option 1**: Double-click `index.html` to open in your browser
-   - **Option 2**: Use a local server for development:
-     ```bash
-     # Using Python 3
-     python3 -m http.server 8080
-     
-     # Using Node.js (if you have live-server installed)
-     npx live-server
-     
-     # Using PHP
-     php -S localhost:8080
-     ```
+1.  **Build Frontend:**
+    ```bash
+    cd frontend
+    npm run build
+    ```
+    *This generates files in `static/dist/`.*
 
-3. **View the website**
-   - Open your browser and navigate to `http://localhost:8080` (if using a local server)
-   - Or simply open the `index.html` file directly in your browser
+2.  **Setup Django:**
+    ```bash
+    # Create virtual environment
+    python -m venv .venv
+    source .venv/bin/activate
 
-## 📱 Responsive Design
+    # Install dependencies
+    pip install -r requirements.txt
 
-The website is fully responsive and optimized for:
-- **Desktop**: 1200px and above
-- **Tablet**: 768px - 1199px
-- **Mobile**: Below 768px
+    # Collect static files
+    python manage.py collectstatic
+    ```
 
-## 🎨 Customization
+3.  **Run Server:**
+    ```bash
+    python manage.py runserver
+    ```
+    Runs on `http://127.0.0.1:8000` (or `3001` if specified).
 
-### Colors
-The website uses a modern color palette defined in CSS custom properties:
-- Primary: `#3b82f6` (Blue)
-- Secondary: `#64748b` (Slate)
-- Background: `#ffffff` (White)
-- Text: `#1e293b` (Dark Slate)
+## 🚀 Deployment Workflow
 
-### Content
-To customize the content:
-1. Edit `index.html` for text content and structure
-2. Replace images in the `assets/` folder
-3. Modify `styles.css` for styling changes
-4. Update `script.js` for functionality changes
+This project is deployed on **Render** using a simplified workflow where frontend assets are pre-built and committed.
 
-### Adding New Sections
-1. Add the HTML structure in `index.html`
-2. Add corresponding CSS styles in `styles.css`
-3. Update navigation links if needed
-4. Add any required JavaScript functionality
+1.  **Make Changes:** Edit `frontend/src/...` or Django files.
+2.  **Build Frontend:**
+    ```bash
+    cd frontend
+    npm run build
+    ```
+3.  **Commit & Push:**
+    ```bash
+    git add frontend/src static/dist
+    git commit -m "Update features"
+    git push
+    ```
+4.  **Render Auto-Deploy:**
+    - Render detects the push.
+    - Executes Build Command: `pip install -r requirements.txt && python manage.py collectstatic --noinput`.
+    - Starts Server: `gunicorn my_Portfolio.wsgi:application`.
 
-## 📧 Contact Information
+## 📝 Features
+- **Hero Section:** Interactive 3D-style layout.
+- **Experience:** Timeline of professional history.
+- **Contact Form:** Functional form integrated with Django backend.
+- **Responsive Design:** Fully optimized for Mobile, Tablet, and Desktop.
 
-- **Email**: ebenezer.iluyomade@gmail.com
-- **Phone**: +48 720 871 738
-- **Location**: Wrocław, Poland
-- **LinkedIn**: [linkedin.com/in/ebenezer-iluyomade](https://linkedin.com/in/ebenezer-iluyomade)
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🤝 Contributing
-
-While this is a personal portfolio, suggestions and feedback are welcome! Feel free to:
-1. Open an issue for bugs or suggestions
-2. Submit a pull request for improvements
-3. Contact me directly for collaboration opportunities
-
-## 🔧 Development Notes
-
-- The website uses vanilla JavaScript for better performance
-- CSS Grid and Flexbox are used for modern, flexible layouts
-- Images are optimized for web performance
-- The design follows modern web standards and accessibility guidelines
-
-## 📈 Performance
-
-- Optimized images and assets
-- Minimal JavaScript for fast loading
-- Efficient CSS with minimal redundancy
-- Mobile-first responsive design
-
----
-
-**Built with ❤️ by Ebenezer Iluyomade**
-
-*Last updated: January 2024*
-## 🆓 Free Hosting Options
-
-- GitHub Pages (static):
-  - Push this repo to GitHub
-  - In repository settings, enable `Pages` with source `main` branch `/ (root)`
-  - Site becomes available at `https://<your-username>.github.io/<repo-name>/`
-- Render (Django backend):
-  - Keep the project structure and push to GitHub
-  - Import the repo at `render.com` and select `render.yaml`
-  - Set env vars: `DJANGO_SETTINGS_MODULE=my_Portfolio.production_settings`, `SECRET_KEY`, `ALLOWED_HOSTS`
-  - Render builds and serves via `gunicorn`
-
-Files added for hosting:
-- `render.yaml` blueprint for free Django hosting
+## 📧 Contact
+**Ebenezer Iluyomade** - Cloud Systems & Security Engineer
