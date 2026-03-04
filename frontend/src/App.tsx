@@ -38,9 +38,10 @@ function App() {
   }, []);
 
   const companies = [
-    { name: 'Kyndryl', role: 'Technical Support Specialist', period: '2022-2023', description: 'Cloud infrastructure management and enterprise support' },
     { name: 'K-DEMS Consulting', role: 'SOC Analyst', period: '2023-2024', description: 'Security operations and incident response' },
-    { name: 'Deloitte', role: 'Security Consultant', period: 'Enterprise', description: 'Security advisory and compliance auditing' },
+    { name: 'Kyndryl', role: 'Technical Support Specialist', period: '2022-2023', description: 'Cloud infrastructure management and enterprise support' },
+    { name: 'Sitel', role: 'Customer Support Specialist', period: '2021-2022', description: 'Customer service and technical support operations' },
+    { name: 'BEDC', role: 'IT Technical Support', period: '2020-2021', description: 'Technical infrastructure support and maintenance' },
   ];
 
   const expertise = [
